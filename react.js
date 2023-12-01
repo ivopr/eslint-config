@@ -25,6 +25,7 @@ module.exports = {
     "simple-import-sort"
   ],
   rules: {
+    "no-undef": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-var-requires": "off",
     "prettier/prettier": [
@@ -61,12 +62,12 @@ module.exports = {
       "warn",
       {
         groups: [
+          // Side effect imports.
+          ["^\\u0000"],
           // Packages `react` related packages come first.
           ["^react", "^@?\\w"],
           // Internal packages.
           ["^(@)(/.*|$)"],
-          // Side effect imports.
-          ["^\\u0000"],
           // Parent imports. Put `..` last.
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // Other relative imports. Put same-folder imports and `.` last.
